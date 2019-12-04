@@ -1,0 +1,13 @@
+#!/bin/bash
+kubectl delete storageclass.storage.k8s.io vxflexos-xfs
+kubectl delete storageclass.storage.k8s.io vxflexos
+kubectl delete serviceaccount -n vxflexos vxflexos-controller
+kubectl delete clusterrole.rbac.authorization.k8s.io vxflexos-controller
+kubectl delete clusterrolebinding.rbac.authorization.k8s.io vxflexos-controller
+kubectl delete serviceaccount -n vxflexos vxflexos-node
+kubectl delete clusterrole.rbac.authorization.k8s.io vxflexos-node
+kubectl delete clusterrolebinding.rbac.authorization.k8s.io vxflexos-node
+kubectl delete csidriver.csi.storage.k8s.io vxflexos
+kubectl delete statefulset.apps -n vxflexos vxflexos-controller
+kubectl delete daemonset.apps  -n vxflexos vxflexos-node
+kubectl get pods -n vxflexos

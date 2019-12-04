@@ -59,6 +59,9 @@ spec:
       labels:
         app: {{ .Release.Name }}-node
     spec:
+      {{ if .Values.openshift }}
+      nodeSelector:
+        node.openshift.io/os_id: rhel {{ end }}
       serviceAccount: {{ .Release.Name }}-node
       hostNetwork: true
       containers:  

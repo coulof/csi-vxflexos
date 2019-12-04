@@ -3,7 +3,9 @@
     echo "requires test name as argument"
     exit 2
 }
-helm install -n test $1
+helm template -n test $1 > $1.yaml
+kubectl apply -f $1.yaml
+#oc adm policy add-scc-to-user privileged -n vxflexos -z vxflextest
 sleep 30
 kubectl describe pods -n test
 sleep 10

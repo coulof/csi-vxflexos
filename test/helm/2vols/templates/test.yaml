@@ -10,6 +10,7 @@ metadata:
     name: vxflextest
     namespace: test
 spec:
+    serviceName: 2vols
     selector:
         matchLabels:
           app: vxflextest
@@ -18,8 +19,7 @@ spec:
         labels:
           app: vxflextest
       spec:
-        serviceAccount: vxflextest
-        hostNetwork: true
+        serviceAccountName: vxflextest
         containers:
           - name: test
             image: docker.io/centos:latest

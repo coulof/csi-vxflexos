@@ -73,6 +73,9 @@ spec:
       labels:
         app: {{ .Release.Name }}-controller
     spec:
+      {{ if .Values.openshift }}
+      nodeSelector:
+        node.openshift.io/os_id: rhel {{ end }}
       serviceAccount: {{ .Release.Name }}-controller
       containers:
         - name: attacher
