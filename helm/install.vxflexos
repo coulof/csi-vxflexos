@@ -3,7 +3,7 @@
 export NS=vxflexos
 source ./common.bash
 
-sh ./verify.kubernetes
+#sh ./verify.kubernetes
 rc=$?
 if [ $rc -ne 0 ] ;
         then echo "*******************************************************************************"
@@ -49,9 +49,9 @@ fi
 
 echo "StorageClasses:"
 kubectl get storageclass
-kubectl get volumesnapshotclass | grep vxflexos-snapclass --quiet
-if [ $? -ne 0 ];
-    then echo "installing volumesnapshotclass"; kubectl create -f volumesnapshotclass.yaml
-fi
+# kubectl get volumesnapshotclass | grep vxflexos-snapclass --quiet
+#if [ $? -ne 0 ];
+#    then echo "installing volumesnapshotclass"; kubectl create -f volumesnapshotclass.yaml
+#fi
 echo "VolumeSnapshotClasses:"
 kubectl get volumesnapshotclass
